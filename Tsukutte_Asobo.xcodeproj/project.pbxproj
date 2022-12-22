@@ -14,6 +14,8 @@
 		508B16E729531A560041B019 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 508B16E629531A560041B019 /* Assets.xcassets */; };
 		508B16EA29531A560041B019 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 508B16E829531A560041B019 /* LaunchScreen.storyboard */; };
 		508B16F2295326C10041B019 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508B16F1295326C00041B019 /* Colors.swift */; };
+		50D5CF762954471F00BB3E16 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D5CF752954471F00BB3E16 /* Entity.swift */; };
+		50D5CF7A29544B7F00BB3E16 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D5CF7929544B7F00BB3E16 /* API.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		508B16E929531A560041B019 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		508B16EB29531A560041B019 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		508B16F1295326C00041B019 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		50D5CF752954471F00BB3E16 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		50D5CF7929544B7F00BB3E16 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,8 @@
 				508B16DD29531A540041B019 /* AppDelegate.swift */,
 				508B16DF29531A540041B019 /* SceneDelegate.swift */,
 				508B16E129531A540041B019 /* ViewController.swift */,
+				50D5CF752954471F00BB3E16 /* Entity.swift */,
+				50D5CF7929544B7F00BB3E16 /* API.swift */,
 				508B16F1295326C00041B019 /* Colors.swift */,
 				508B16E329531A540041B019 /* Main.storyboard */,
 				508B16E629531A560041B019 /* Assets.xcassets */,
@@ -142,8 +148,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				508B16E229531A540041B019 /* ViewController.swift in Sources */,
+				50D5CF762954471F00BB3E16 /* Entity.swift in Sources */,
 				508B16F2295326C10041B019 /* Colors.swift in Sources */,
 				508B16DE29531A540041B019 /* AppDelegate.swift in Sources */,
+				50D5CF7A29544B7F00BB3E16 /* API.swift in Sources */,
 				508B16E029531A540041B019 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
