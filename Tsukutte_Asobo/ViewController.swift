@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class ViewController: UIViewController {
     
@@ -111,6 +112,7 @@ class ViewController: UIViewController {
         setUpAPILabel(death, size: size, centerX: leftX, y: 260, font: font, color: color, parentView)
         setUpAPILabel(discharge, size: size, centerX: rightX, y: 260, font: font, color: color, parentView)
         
+        HUD.show(.progress, onView: view) //APIでデータ取得中、画面がくるくる周り操作不能になる。これで非同期処理中のユーザー操作をコントロールできる
         CovidAPI.getTotal(completion: {(result: CovidInfo.Total) -> Void in //構造体にいれたAPIデータを呼び出している
             DispatchQueue.main.async {//クロージャ内の処理をメインスレッドで行うようにする関数　表示にかかわる処理はメインスレッドで行わなければならない
                 pcr.text = "\(result.pcr)"
@@ -119,7 +121,10 @@ class ViewController: UIViewController {
                 severe.text = "\(result.severe)"
                 death.text = "\(result.death)"
                 discharge.text = "\(result.discharge)"
+                print(Thread.isMainThread) //自分のいるスレッドがメインスレッドかどうかをboolで返す
+                HUD.hide() // くるくる回転　終了 これはUI操作に関わる内容なので、クロージャ内で操作する場合はDispatchQueue内で操作しなければならない　MainThreadで処理されるスクリプトは優先して実行されるので、結果的にHUDの描写も高速化される 
             }
+            print(Thread.isMainThread)
         })
     }
     
@@ -184,9 +189,6 @@ class ViewController: UIViewController {
         
     }
     
-    
-    
-
     func setUpGradation() { //グラデーションのレイヤーを当てるメソッド
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = CGRect(x:0, y:0, width: view.frame.size.width, height: view.frame.size.height / 2)
