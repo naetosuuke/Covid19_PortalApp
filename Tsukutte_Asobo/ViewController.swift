@@ -34,7 +34,6 @@ class ViewController: UIViewController {
          //addSubviewメソッドは、親.adsSubview(子)と書くことで、親の上に子のViewを載せることができる。
          uiView.addSubview(uiView2)
          */
-        
     }
     
     func setUpContent(){ //画面の真ん中にcontentViewをおくメソッド
@@ -47,9 +46,9 @@ class ViewController: UIViewController {
         contentView.layer.shadowColor = UIColor.gray.cgColor
         contentView.layer.shadowOpacity = 0.5 //影の透明度
         view.addSubview(contentView) // viewの上にcontentViewをのせている
-        
         view.backgroundColor = .systemGray6 //レイヤーの下のViewの色をグレーにした
         
+        //ここからコンテンツの宣言、配置が開始
         let labelFont = UIFont.systemFont(ofSize: 15, weight: .heavy) //これからつくるラベルのパラメータを作成
         let size = CGSize(width: 150, height: 50)
         let color = colors.bluePurple
@@ -68,10 +67,10 @@ class ViewController: UIViewController {
         setUpLabel("退院者数", size: size, centerX: rightX, y: 220 , font: labelFont, color: color, contentView)
         
         let height = view.frame.size.height / 2
-        setUpButton("健康管理", size: size, y: height + 190, color: colors.blue, parentView: view) //height viewの半分の高さ＋190ピクセル
-        setUpButton("県別状況", size: size, y: height + 240, color: colors.blue, parentView: view)  //height viewの半分の高さ＋240ピクセル
-        //width view幅から-50ピクセル addTargetメソッド 引数selfはクラスの指定、引数actionで関数を書く。(@objc　から始まる関数は#selectorとつける) 引数forは起動のタイミング
-        setUpImageButton("conversation", x: view.frame.size.width - 50).addTarget(self, action: #selector(chatAction), for: .touchDown)
+        setUpButton("健康管理", size: size, y: height + 190, color: colors.blue, parentView: view).addTarget(self, action: #selector(goHealthCheck), for: .touchDown) //height viewの半分の高さ＋190ピクセル UIButton.addtargetメソッドの第一引数はいつもselfでよい
+        setUpButton("県別状況", size: size, y: height + 240, color: colors.blue, parentView: view).addTarget(self, action: #selector(goChart), for: .touchDown)  //height viewの半分の高さ＋240ピクセル
+        
+        setUpImageButton("conversation", x: view.frame.size.width - 50).addTarget(self, action: #selector(chatAction), for: .touchDown) // width view幅から-50ピクセル addTargetメソッド 引数selfはクラスの指定、引数actionで呼び出す関数を書く。(@objc　から始まる関数は#selectorとつける) 引数forは起動のタイミング
         setUpImageButton("reload", x: 15).addTarget(self, action: #selector(reloadAction), for: .touchDown)
         
         //アニメーションで動くウイルス画像
@@ -143,16 +142,24 @@ class ViewController: UIViewController {
         return button // UIButtonのインスタンスを戻り値として返している
     }
     
-    @objc func reloadAction() {
+    @objc func reloadAction() { //addtargetメソッドで呼び出す関数は、 @objcをつける。
         loadView()
         viewDidLoad()
     }
     
     @objc func chatAction(){
-        print("タップchat")
+        performSegue(withIdentifier: "goChat", sender: nil)
     }
     
-    func setUpButton(_ title: String, size:CGSize, y:CGFloat, color: UIColor, parentView: UIView){
+    @objc func goHealthCheck(){ //Segueを作動させるメソッド、senderは新しい画面へ渡す値を入れれる(今回はなし)
+        performSegue(withIdentifier: "goHealthCheck", sender: nil)
+    }
+    @objc func goChart(){ //Segueを作動させるメソッド、senderは新しい画面へ渡す値を入れれる(今回はなし)
+        performSegue(withIdentifier: "goChart", sender: nil)
+    }
+    
+    
+    func setUpButton(_ title: String, size:CGSize, y:CGFloat, color: UIColor, parentView: UIView) -> UIButton { //戻り値 UIButtonインスタンス
         let button = UIButton(type: .system) //UIボタンのインスタンス生成　　type.systemとすることでボタンの機能をもたせる（タップすると明るくなる）
         button.setTitle(title, for: .normal) //第二引数　ボタンの状態を設定　.selectedなどがある
         button.frame.size = size
@@ -162,6 +169,7 @@ class ViewController: UIViewController {
         button.frame.origin.y = y
         button.setTitleColor(color, for:.normal)
         parentView.addSubview(button)
+        return button
     }
     
     func setUpLabel(_ text: String, size: CGSize, centerX: CGFloat, y:CGFloat, font:UIFont, color:UIColor, _ parentView: UIView){
@@ -187,10 +195,7 @@ class ViewController: UIViewController {
         gradientLayer.endPoint =  CGPoint.init(x:0.5, y: 0.5)// グラデーションのレイヤー終了ポイント
         view.layer.insertSublayer(gradientLayer, at:1) //view.layerプロパティのinsertSublayerメソッドで設定したレイヤーをviewに適用
         
-        
-        
     }
-    
     
 
 }

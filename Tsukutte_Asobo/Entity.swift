@@ -20,6 +20,14 @@ struct CovidInfo: Codable {
         var discharge: Int //退院者数
     }
     
+    struct Prefecture: Codable {
+        var id: Int
+        var name_ja: String
+        var cases: Int
+        var deaths: Int
+        var pcr: Int
+    }
+
     
     
     

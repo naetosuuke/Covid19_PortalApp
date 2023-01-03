@@ -6,14 +6,32 @@
 //
 
 import UIKit
+import Firebase //Firebaseのライブラリを読み込み
+import FirebaseFirestore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        CovidAPI.getPrefecture(completion: {(result: [CovidInfo.Prefecture]) -> Void in //ライフサイクル 最初の画面を起動し終わったタイミングで県別APIデータを入手し、シングルトンにデータを代入している。
+            CovidSingleton.shared.prefecture = result
+        })
+        FirebaseApp.configure() // configureを読み込み
+        /*FireStoreへの接続確認用スクリプト
+         
+        Firestore.firestore().collection("users").document("Message").setData([
+            "UserMessage": "message",
+            "Date": "messageDate",
+            "UserId": "messageId"
+        ], merge: false) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Documents successfully written!")
+            }
+        }
+         */
         return true
     }
 
