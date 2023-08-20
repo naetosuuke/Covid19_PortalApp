@@ -1,6 +1,8 @@
 # Tsukutte_Asobo
 just for self learning, not for distribution (Soshi Tanaka All Rights Reserved)<br>
 https://www.amazon.co.jp/【Swift】作って学ぼうiOSアプリ開発-田中颯志-ebook/dp/B08V8KW39K<br>
+https://twitter.com/Sossui_Swift <br>
+
 <br>
 本アプリは、上記書籍の内容に基づき、各要素の求術取得を目的としてハンズオン形式で作成した。<br>
 <br>
