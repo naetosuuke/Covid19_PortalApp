@@ -3,9 +3,8 @@ just for self learning, not for distribution (Soshi Tanaka All Rights Reserved)<
 https://www.amazon.co.jp/【Swift】作って学ぼうiOSアプリ開発-田中颯志-ebook/dp/B08V8KW39K<br>
 https://twitter.com/Sossui_Swift <br>
 
-<br>
-エンジニア転職前に本見て作ったアプリです。<br>
-API叩いて感染者数とってきたり1:1のチャット機能有したりライブラリ使って図表出したり 結構ちゃんと動きます<br>
+> エンジニア転職前に本見て作ったアプリです。<br>
+API叩いて感染者数とってきたり1:1のチャット機能有したりライブラリ使って図表出したり 結構色々な機能持ってます<br>
 ただ、何かしらのアーキに従って設計されたアプリではないはずなので プロジェクト構成は変かも<br>
 どうやらCocoaPodsが使えなくなるらしいので、手元に落としてちゃんと動くかは不明<br>
 今はweb開発メインになりましたが、機会があればまたネイティブ開発やるかも？<br>
